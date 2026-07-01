@@ -1,0 +1,19 @@
+{
+  "name": "Florence Japanese",
+  "short_name": "Florence JP",
+  "description": "Song-based Japanese lessons with lyrics, furigana, vocabulary, grammar, nuance, and review.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fbfaf7",
+  "theme_color": "#fbfaf7",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
