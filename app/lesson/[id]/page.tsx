@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: LessonPageProps) {
   const { id } = await params;
   const lesson = getLesson(id);
   return {
-    title: lesson ? `Lesson ${lesson.number}: ${lesson.title}` : "Lesson",
+    title: lesson ? `Lesson ${lesson.number}` : "Lesson",
   };
 }
 

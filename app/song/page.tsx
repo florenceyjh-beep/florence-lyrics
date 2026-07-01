@@ -41,7 +41,6 @@ export default function SongPage() {
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent-dark">
               Lesson {lesson.number}
             </p>
-            <h2 className="mt-1 text-xl font-black text-ink">{lesson.title}</h2>
             <p className="mt-2 text-sm text-muted">
               Learning Goals {"->"} Lyrics {"->"} Normal Speech {"->"} Vocabulary {"->"} Grammar{" "}
               {"->"} Nuance {"->"} Review

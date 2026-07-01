@@ -12,7 +12,6 @@ export function LessonCard({ lesson }: { lesson: Lesson }) {
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent-dark">
             Lesson {lesson.number}
           </p>
-          <h2 className="mt-1 text-xl font-black leading-snug text-ink">{lesson.title}</h2>
           <p className="mt-2 text-sm text-muted">{lesson.subtitle}</p>
         </div>
         <span className="shrink-0 rounded-full border border-line px-3 py-1 text-xs font-semibold text-muted">
