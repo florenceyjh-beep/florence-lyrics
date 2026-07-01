@@ -28,19 +28,6 @@ export default function HomePage() {
         }
       />
 
-      <section className="grid gap-3 sm:grid-cols-3">
-        {[
-          ["Reusable", "Every lesson follows the same seven-part template."],
-          ["Future Audio", "Lesson data is ready for audio IDs and line timing."],
-          ["Future SRS", "Review metadata is separated for spaced repetition."],
-        ].map(([title, body]) => (
-          <div key={title} className="rounded-md border border-line bg-white p-4 shadow-sm">
-            <h2 className="font-black text-ink">{title}</h2>
-            <p className="mt-2 text-sm text-muted">{body}</p>
-          </div>
-        ))}
-      </section>
-
       <section>
         <div className="mb-3 flex items-end justify-between gap-3">
           <div>
