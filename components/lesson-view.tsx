@@ -26,7 +26,6 @@ export function LessonView({ lesson }: { lesson: Lesson }) {
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent-dark">
               Lesson {lesson.number}
             </p>
-            <h1 className="mt-1 text-3xl font-black leading-tight text-ink">{lesson.title}</h1>
             <p className="mt-2 text-sm text-muted">{lesson.subtitle}</p>
           </div>
           <span className="shrink-0 rounded-full border border-line px-3 py-1 text-xs font-semibold text-muted">
