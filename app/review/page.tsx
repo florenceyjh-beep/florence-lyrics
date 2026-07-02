@@ -1,31 +1,23 @@
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
-import { lessons } from "@/lib/lessons";
+import { getReviewCards } from "@/lib/songs";
 
 export default function ReviewPage() {
-  const cards = lessons.flatMap((lesson) =>
-    lesson.review.map((prompt, index) => ({
-      id: `${lesson.id}-${index}`,
-      lessonId: lesson.id,
-      lessonTitle: `Lesson ${lesson.number}`,
-      prompt,
-      due: "Ready",
-    })),
-  );
+  const cards = getReviewCards();
 
   return (
     <div className="space-y-5">
       <PageHero
         eyebrow="Review"
         title="Future Spaced Repetition"
-        description="The first review queue is generated from lesson review points and is ready to evolve into SRS scheduling."
+        description="The first review queue is generated from song review points and is ready to evolve into SRS scheduling."
       />
 
       <section className="rounded-md border border-line bg-white p-4 shadow-sm sm:p-5">
         <div className="flex items-center justify-between gap-3">
           <div>
             <h2 className="text-xl font-black text-ink">Review Queue</h2>
-            <p className="text-sm text-muted">{cards.length} starter cards from current lessons</p>
+            <p className="text-sm text-muted">{cards.length} starter cards from current songs</p>
           </div>
           <span className="rounded-full bg-soft px-3 py-1 text-xs font-bold text-accent-dark">
             SRS prepared
@@ -37,7 +29,7 @@ export default function ReviewPage() {
         {cards.map((card) => (
           <Link
             key={card.id}
-            href={`/lesson/${card.lessonId}`}
+            href={`/song/${card.songId}#${card.sectionId}`}
             className="block rounded-md border border-line bg-white p-4 shadow-sm transition hover:border-accent"
           >
             <div className="flex items-start justify-between gap-3">
@@ -47,7 +39,7 @@ export default function ReviewPage() {
               </span>
             </div>
             <p className="mt-3 text-xs font-bold uppercase tracking-[0.14em] text-muted">
-              {card.lessonTitle}
+              {card.sourceTitle}
             </p>
           </Link>
         ))}

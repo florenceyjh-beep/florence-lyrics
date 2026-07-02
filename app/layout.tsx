@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: "Florence Japanese",
     template: "%s | Florence Japanese",
   },
-  description: "A mobile-first Japanese learning PWA built around songs, lessons, vocabulary, grammar, and review.",
+  description: "A mobile-first Japanese learning PWA built around songs, vocabulary, grammar, and review.",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,

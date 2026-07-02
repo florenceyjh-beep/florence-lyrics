@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { LessonCard } from "@/components/lesson-card";
 import { PageHero } from "@/components/page-hero";
-import { lessons } from "@/lib/lessons";
+import { SongCard } from "@/components/song-card";
+import { songs } from "@/lib/songs";
 
 export default function HomePage() {
   return (
@@ -9,14 +9,14 @@ export default function HomePage() {
       <PageHero
         eyebrow="Mobile-first PWA"
         title="Florence Japanese"
-        description="A song-based Japanese study app with reusable lesson structure, furigana, normal speech, vocabulary, grammar, nuance, and review."
+        description="A song-based Japanese study app with furigana, normal speech, vocabulary, grammar, nuance, and review."
         actions={
           <>
             <Link
-              href="/lesson/lesson-1"
+              href="/song/drama-grand-prix"
               className="rounded-md bg-accent px-4 py-2 text-sm font-bold text-white shadow-sm"
             >
-              Start Lesson 1
+              Start Drama Grand Prix
             </Link>
             <Link
               href="/review"
@@ -32,17 +32,17 @@ export default function HomePage() {
         <div className="mb-3 flex items-end justify-between gap-3">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent-dark">
-              Current Song
+              Current Songs
             </p>
-            <h2 className="text-2xl font-black text-ink">Drama Grand Prix</h2>
+            <h2 className="text-2xl font-black text-ink">Songs</h2>
           </div>
-          <Link href="/lesson" className="text-sm font-bold text-accent-dark">
-            All lessons
+          <Link href="/song" className="text-sm font-bold text-accent-dark">
+            All songs
           </Link>
         </div>
         <div className="grid gap-3 md:grid-cols-2">
-          {lessons.map((lesson) => (
-            <LessonCard key={lesson.id} lesson={lesson} />
+          {songs.map((song) => (
+            <SongCard key={song.id} song={song} />
           ))}
         </div>
       </section>

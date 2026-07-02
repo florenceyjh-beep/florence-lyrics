@@ -1,7 +1,7 @@
 {
   "name": "Florence Japanese",
   "short_name": "Florence JP",
-  "description": "Song-based Japanese lessons with lyrics, furigana, vocabulary, grammar, nuance, and review.",
+  "description": "Song-based Japanese study with lyrics, furigana, vocabulary, grammar, nuance, and review.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

@@ -49,3 +49,25 @@ export type Lesson = {
     audioReady: boolean;
   };
 };
+
+export type SongSection = {
+  id: string;
+  title: string;
+  subtitle?: string;
+  lineCount: number;
+  learningGoals: string[];
+  lyrics: LyricChunk[][];
+  normalSpeech: NormalSpeechLine[];
+  vocabulary: VocabularyEntry[];
+  grammar: GrammarPoint[];
+  nuance?: string;
+  review: string[];
+};
+
+export type Song = {
+  id: string;
+  title: string;
+  subtitle: string;
+  titleMeaning: string[];
+  sections: SongSection[];
+};

@@ -3,8 +3,7 @@ import type { ReactNode } from "react";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/song", label: "Song" },
-  { href: "/lesson", label: "Lesson" },
+  { href: "/song", label: "Songs" },
   { href: "/vocabulary", label: "Vocab" },
   { href: "/grammar", label: "Grammar" },
   { href: "/review", label: "Review" },
@@ -19,7 +18,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             Florence Japanese
           </Link>
           <span className="rounded-full bg-soft px-3 py-1 text-xs font-semibold text-accent-dark">
-            Drama Grand Prix
+            Songs
           </span>
         </div>
       </header>
@@ -27,7 +26,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <main className="mx-auto max-w-5xl px-4 py-5 sm:px-6">{children}</main>
 
       <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 px-2 pb-[max(env(safe-area-inset-bottom),0.5rem)] pt-2 shadow-[0_-10px_30px_rgba(0,0,0,0.08)] backdrop-blur md:hidden">
-        <div className="mx-auto grid max-w-md grid-cols-6 gap-1">
+        <div className="mx-auto grid max-w-md grid-cols-5 gap-1">
           {navItems.map((item) => (
             <Link
               key={item.href}
