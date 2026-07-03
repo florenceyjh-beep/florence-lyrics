@@ -162,6 +162,7 @@ export const songs = [
           { title: "～のよう", body: ["溶けた琥珀のよう = 像融化的琥珀一样。", "名词 + のよう 用来做比喻。"] },
           { title: "まるで～のよう", body: ["まるで夜のようだ = 简直像夜晚一样。", "まるで 会加强比喻感，让画面更梦幻。"] },
           { title: "名词列举：A と B", body: ["背びれと口髭 用 と 连接两个名词。", "这种列举方式让画面像慢慢描写身体细节。"] },
+          { title: "Noun + のよう", body: ["意思：像……一样 / 仿佛是……。", "Song example: 溶けた琥珀のよう", "Chinese: 像融化的琥珀一样。"] },
         ],
         nuance: "Verse 1 几乎没有直接说明情节，而是用身体部位和光影来描写“你”。胸びれ、背びれ、口髭 让“你”带有鲸的形象；窓辺 又把海的动作放进室内空间，制造梦境感。琥珀、まなこ、夜 都是安静、古老、柔暗的意象，让整段像在半梦半醒中看见一只温柔的鲸。",
         review: [
@@ -309,7 +310,14 @@ export const songs = [
           { title: "想いを馳せる", body: ["固定表达：A に想いを馳せる。", "意思是把心思投向 A，遥想或思念 A。"] },
           { title: "ほど：程度", body: ["すぐは覚めないほど眠って = 睡到不会马上醒来的程度。", "ほど 前面的内容说明程度有多强。"] },
           { title: "副词：形容词く形", body: ["深い → 深く，白い → 白く。", "深く泳いで = 深深地游；白く微睡みながら = 白白地 / 泛白地打盹。"] },
-          { title: "～ながら", body: ["微睡みながら = 一边打盹一边……。", "ながら 表示两个动作或状态同时发生。"] },
+          { title: "～ながら：同时动作", body: ["微睡みながら = 一边打盹一边……。", "ながら 表示两个动作或状态同时发生。"] },
+          { title: "すぐは = すぐ + は", body: ["「すぐは」 is not one word. It is 「すぐ」 + particle 「は」.", "Because は is pronounced “wa,” learners may hear it as 「すぐわ」.", "Meaning: not immediately / not right away / at least not soon.", "Song example: すぐは覚めないほど眠って", "Natural Japanese: すぐには覚めないくらい深く眠って", "Chinese: 睡得很深，深到一时半会儿不会醒来。"] },
+          { title: "～ほど", body: ["Shows degree or extent.", "In 「すぐは覚めないほど眠って」, it means “sleep to the extent that one will not wake up soon.”", "Chinese: ……到……的程度。"] },
+          { title: "～ながら", body: ["Means “while doing…”.", "Song example: 白く微睡みながら", "Chinese: 一边浅浅地打盹 / 在白色朦胧中微睡着。"] },
+          { title: "～ように", body: ["Means “as if / like.”", "Song example: 陸に想い馳せるように", "Chinese: 仿佛思念着陆地一般。"] },
+          { title: "Verb て-form sequence", body: ["Used to connect actions in sequence.", "Song examples: 話して　鳴いて / 瞼を落として　蓋して", "Chinese: 表示动作连续发生：说着、鸣叫着；垂下眼帘、合上。"] },
+          { title: "～てた = ～ていた", body: ["Casual contraction of past progressive.", "Song example: 僕ら波を掻いてた", "Natural Japanese: 僕らは波を掻いていた", "Chinese: 我们曾经划开浪。"] },
+          { title: "にゃ = には", body: ["「にゃ」 is a contracted form of 「には」.", "Chinese: 歌词或口语里的缩略形式。"] },
         ],
         nuance: "Chorus 1 从安静的观察进入流动的动作：话语、鸣叫、拨浪、想念陆地、闭眼、沉睡、呼吸、下潜。人类动作和鲸的动作混在一起，让“僕ら”像是在梦里变成海中的生物。反复出现的 泳いで 和 眠り / 微睡み 把情绪往更深处带，像不是醒着唱歌，而是在浅眠的波间慢慢下沉。",
         review: [
