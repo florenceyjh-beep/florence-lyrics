@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { Song, SongSection } from "@/lib/types";
+import type { LyricChunk, Song, SongSection } from "@/lib/types";
 import { RubyText } from "@/components/ruby-text";
 
 function CardSection({
@@ -21,11 +21,37 @@ function EmptySection() {
   return <div className="min-h-6" />;
 }
 
+function LyricLine({ line }: { line: LyricChunk[] }) {
+  return (
+    <>
+      {line.map((chunk, chunkIndex) => (
+        <RubyText key={chunkIndex} text={chunk.text} ruby={chunk.ruby} />
+      ))}
+    </>
+  );
+}
+
+function LyricsBlock({ section }: { section: SongSection }) {
+  return (
+    <div className="rounded-md border border-[#f0dfc3] bg-cream p-4 text-lg leading-loose text-ink">
+      <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-accent-dark">
+        {section.title}
+      </p>
+      {section.lyrics.map((line, index) => (
+        <p key={index}>
+          <LyricLine line={line} />
+        </p>
+      ))}
+    </div>
+  );
+}
+
 function LearningSection({ section }: { section: SongSection }) {
   const hasContent =
     section.learningGoals.length ||
     section.lyrics.length ||
     section.normalSpeech.length ||
+    section.lineStudy?.length ||
     section.vocabulary.length ||
     section.grammar.length ||
     section.nuance ||
@@ -66,22 +92,99 @@ function LearningSection({ section }: { section: SongSection }) {
 
           <CardSection title="Lyrics with Furigana">
             {section.lyrics.length ? (
-              <div className="rounded-md border border-[#f0dfc3] bg-cream p-4 text-lg leading-loose text-ink">
-                {section.lyrics.map((line, index) => (
-                  <p key={index}>
-                    {line.map((chunk, chunkIndex) => (
-                      <RubyText key={chunkIndex} text={chunk.text} ruby={chunk.ruby} />
-                    ))}
-                  </p>
-                ))}
-              </div>
+              <LyricsBlock section={section} />
             ) : (
               <EmptySection />
             )}
           </CardSection>
 
-          <CardSection title="Normal Speech with Translation">
-            {section.normalSpeech.length ? (
+          <CardSection title="Detailed Learning">
+            {section.lineStudy?.length ? (
+              <div className="space-y-3">
+                {section.lineStudy.map((line, index) => (
+                  <details
+                    key={line.label}
+                    open={index === 0}
+                    className="rounded-md border border-line bg-white p-3"
+                  >
+                    <summary className="flex cursor-pointer items-start justify-between gap-3 font-bold text-ink">
+                      <span>{line.label}</span>
+                      <span className="shrink-0 text-xs text-muted">tap</span>
+                    </summary>
+                    <div className="mt-3 space-y-3 text-sm">
+                      <p className="rounded-md border border-line bg-paper p-3 text-base leading-loose">
+                        <LyricLine line={line.original} />
+                      </p>
+                      <p className="rounded-md bg-mint p-3">
+                        <span className="font-bold">中文翻译：</span>
+                        {line.translation}
+                      </p>
+                      <p className="border-l-4 border-accent pl-3">
+                        <span className="font-bold">Normal Speech / Natural Japanese：</span>
+                        {line.normalSpeech}
+                      </p>
+                      <div className="rounded-md border border-line p-3">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-bold">Naturalness:</span>
+                          <span className="text-accent-dark">{line.naturalness.stars}</span>
+                          <span className="text-muted">{line.naturalness.description}</span>
+                        </div>
+                        <p className="mt-2 text-xs text-muted">
+                          Appropriate for: {line.naturalness.appropriateFor.join(" / ")}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-ink">Daily Alternative</p>
+                        <ul className="mt-2 space-y-2">
+                          {line.dailyAlternatives.map((alternative) => (
+                            <li key={alternative} className="rounded-md bg-paper px-3 py-2">
+                              {alternative}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="font-bold text-ink">Grammar Notes</p>
+                        <ul className="mt-2 space-y-2 text-muted">
+                          {line.grammarNotes.map((note) => (
+                            <li key={note} className="rounded-md border border-line px-3 py-2">
+                              {note}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="font-bold text-ink">Vocabulary</p>
+                        <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                          {line.vocabulary.map((entry) => (
+                            <div key={`${line.label}-${entry.term}`} className="rounded-md bg-paper p-3">
+                              <div className="flex items-baseline justify-between gap-3">
+                                <span className="font-bold text-ink">{entry.term}</span>
+                                <span className="text-xs font-semibold text-accent-dark">
+                                  {entry.reading}
+                                </span>
+                              </div>
+                              <p className="mt-1 text-muted">{entry.meaning}</p>
+                              <p className="mt-1 text-xs text-muted">{entry.note}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <p className="rounded-md bg-soft p-3">
+                        <span className="font-bold">Literary Interpretation: </span>
+                        {line.literaryInterpretation}
+                      </p>
+                      {line.literarySymbolism ? (
+                        <p className="rounded-md border border-[#cfeadf] bg-mint p-3">
+                          <span className="font-bold">Literary Symbolism / 文学意象: </span>
+                          {line.literarySymbolism}
+                        </p>
+                      ) : null}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            ) : section.normalSpeech.length ? (
               <div className="space-y-3">
                 {section.normalSpeech.map((line, index) => (
                   <details
@@ -205,7 +308,7 @@ export function SongView({ song }: { song: Song }) {
               Song
             </p>
             <h1 className="mt-1 text-3xl font-black leading-tight text-ink">{song.title}</h1>
-            <p className="mt-2 text-sm text-muted">{song.subtitle}</p>
+            <p className="mt-2 text-sm text-muted">{song.artist ?? song.subtitle}</p>
           </div>
           <span className="shrink-0 rounded-full border border-line px-3 py-1 text-xs font-semibold text-muted">
             {lineCount} lines
@@ -221,9 +324,86 @@ export function SongView({ song }: { song: Song }) {
         </div>
       </CardSection>
 
+      {(song.theme || song.mood || song.keyExpressions?.length) ? (
+        <CardSection title="Song Introduction">
+          <div className="space-y-3 text-sm text-ink">
+            {song.theme ? (
+              <p>
+                <span className="font-bold">Theme: </span>
+                {song.theme}
+              </p>
+            ) : null}
+            {song.mood ? (
+              <p>
+                <span className="font-bold">Mood: </span>
+                {song.mood}
+              </p>
+            ) : null}
+            {song.keyExpressions?.length ? (
+              <div>
+                <p className="font-bold">Key Expressions</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {song.keyExpressions.map((expression) => (
+                    <span
+                      key={expression}
+                      className="rounded-full border border-line bg-paper px-3 py-1 text-xs font-semibold text-muted"
+                    >
+                      {expression}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </CardSection>
+      ) : null}
+
+      <CardSection title="Lyrics Overview">
+        <div className="space-y-3">
+          {song.sections.map((section) => (
+            <LyricsBlock key={section.id} section={section} />
+          ))}
+        </div>
+      </CardSection>
+
       {song.sections.map((section) => (
         <LearningSection key={section.id} section={section} />
       ))}
+
+      {song.symbolism?.length ? (
+        <CardSection title="Literary Symbolism / 文学意象">
+          <div className="space-y-3">
+            {song.symbolism.map((entry) => (
+              <details key={entry.title} className="rounded-md border border-line bg-white p-3">
+                <summary className="cursor-pointer font-bold text-ink">{entry.title}</summary>
+                <div className="mt-3 space-y-2 text-sm text-muted">
+                  {entry.body.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                  {entry.chinese.map((paragraph) => (
+                    <p key={paragraph} className="text-ink">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </details>
+            ))}
+          </div>
+        </CardSection>
+      ) : null}
+
+      {song.authorStyle ? (
+        <CardSection title={song.authorStyle.title}>
+          <div className="space-y-2 text-sm text-ink">
+            {song.authorStyle.body.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            {song.authorStyle.chinese.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </CardSection>
+      ) : null}
     </article>
   );
 }
